@@ -9,11 +9,11 @@ clean_dir = os.path.join(os.getcwd(), "data_clean")
 #####################################################################################
 def analyse_NO2_200_3days():
     print("\n/////////////////////////////////////////////////////////////////////////////////////////////////////")
-    print("//         Analyse NO2 - Seuil de recommandation 200 µg/m3 sur 3 jours glissants                    //")
+    print("//         Analyse NO2 - Seuil d'alerte 200 µg/m3 sur 3 jours glissants                            //")
     print("/////////////////////////////////////////////////////////////////////////////////////////////////////\n")
 
     # Charger le fichier NO2
-    df_no2 = pd.read_csv(os.path.join(clean_dir, "NO2_data_TEST.csv"))
+    df_no2 = pd.read_csv(os.path.join(clean_dir, "NO2_data.csv"))
 
     # Forcer format date
     df_no2['date_local'] = pd.to_datetime(df_no2['date_local'])
@@ -44,7 +44,7 @@ def analyse_NO2_200_3days():
 
     # Sauvegarder le résultat
     df_journalier_alert.to_csv(os.path.join(clean_dir, "NO2_alert_200_3days.csv"), index=False)
-    print("\nNO2 200 µg/m3 3 jours alerts saved to data_clean/NO2_alert_200_3days.csv\n")
+    print("\nNO2 200 µg/m3 3 jours alerte sauvegardée dans data_clean/NO2_alert_200_3days.csv\n")
 
 
 
@@ -52,9 +52,10 @@ def analyse_NO2_200_3days():
 #                              ANALYSE PM10
 #####################################################################################
 
-##TO DO : A REFAIRE - 
 def analyse_PM10():
-    print("=== Analyse PM10 ===")
+    print("\n/////////////////////////////////////////////////////////////////////////////////////////////////////")
+    print("//          Analyse PM10 - Seuil d'alerte 80 µg/m3 sur 1 jour                                      //")
+    print("/////////////////////////////////////////////////////////////////////////////////////////////////////\n")
     df_pm10 = pd.read_csv(os.path.join(clean_dir, "PM10_data.csv"))
 
     # Lignes au-dessus du seuil
@@ -67,11 +68,12 @@ def analyse_PM10():
 
     # Sauvegarde éventuelle
     df_alert_pm10.to_csv(os.path.join(clean_dir, "PM10_alerts.csv"), index=False)
-    print("PM10 alerts saved to data_clean/PM10_alerts.csv\n")
+    print("PM10 alerte sauvegardée dans data_clean/PM10_alerts.csv\n")
 
 
 
 if __name__ == "__main__":
     analyse_NO2_200_3days()
+    analyse_PM10()
 
 
