@@ -66,7 +66,7 @@ def create_dashboard_with_alerts(wb):
 
     def make_plot(data, col_x, col_y, title, filename):
         if data.empty:
-            print(f"⚠️ Données vides pour : {title}")
+            print(f"Données vides pour : {title}")
             return
         plt.figure(figsize=(10, 5))
         plt.bar(data[col_x], data[col_y])
