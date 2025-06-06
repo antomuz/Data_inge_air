@@ -8,7 +8,7 @@ from openpyxl.drawing.image import Image
 def create_chart(df, x, y, title, filename):
     plt.figure(figsize=(8, 5))
     if x not in df.columns or y not in df.columns:
-        print(f"❌ Colonnes '{x}' ou '{y}' non trouvées. Ignoré.")
+        print(f"Colonnes '{x}' ou '{y}' non trouvées. Ignoré.")
         return
     df = df.sort_values(by=x)
     df.groupby(x)[y].mean().plot(kind="line", marker="o")
@@ -21,7 +21,7 @@ def create_chart(df, x, y, title, filename):
 
 def create_threshold_plot(df, x, y, title, filename, seuils):
     if x not in df.columns or y not in df.columns:
-        print(f"⚠️ Données invalides pour {title}")
+        print(f"Données invalides pour {title}")
         return
 
     df[x] = pd.to_datetime(df[x])
@@ -66,7 +66,7 @@ def create_dashboard_with_alerts(wb):
 
     def make_plot(data, col_x, col_y, title, filename):
         if data.empty:
-            print(f"⚠️ Données vides pour : {title}")
+            print(f"Données vides pour : {title}")
             return
         plt.figure(figsize=(10, 5))
         plt.bar(data[col_x], data[col_y])
@@ -172,7 +172,7 @@ def run_export():
     create_dashboard_with_alerts(wb)
     add_normes_sheet(wb)
     wb.save(output_file)
-    print(f"✅ Rapport Excel généré : {output_file}")
+    print(f"Rapport Excel généré : {output_file}")
 
 if __name__ == "__main__":
     run_export()
