@@ -57,6 +57,10 @@ def process_PM10_data():
     df_PM10['pm10_value'] = pd.to_numeric(df_PM10['pm10_value'], errors='coerce')
 
     df_PM10 = df_PM10.dropna(subset=['pm10_value'])
+    # Supprimer les valeurs négatives ou aberrantes
+    df_PM10 = df_PM10[df_PM10["pm10_value"] >= 0]
+    df_PM10 = df_PM10[df_PM10["pm10_value"] < 1000]
+
 
     # === Ajouter la colonne de seuil pour info ===
     df_PM10['seuil_info_recommandation'] = 50  # µg/m³
@@ -112,6 +116,10 @@ def process_NO2_data():
 
     # === SUPPRIMER les lignes où la valeur est null ===
     df_NO2 = df_NO2.dropna(subset=['no2_value'])
+    # Supprimer les valeurs négatives ou aberrantes
+    df_NO2 = df_NO2[df_NO2["no2_value"] >= 0]
+    df_NO2 = df_NO2[df_NO2["no2_value"] < 1000]
+
 
     # === Ajouter les seuils réglementaires NO2 ===
     # (source : ton PDF :contentReference[oaicite:0]{index=0})

@@ -2,6 +2,7 @@
 from datetime import datetime, timedelta
 import extract_data
 import process_data
+import export_excel
 
 end_date = datetime.now()
 start_date = end_date - timedelta(days=1080)
@@ -44,3 +45,12 @@ process_data.process_enterprise_data()
 print("Extraction and processing completed successfully.")
 
 # =========  ANALYSE ========= #
+
+import analyse
+analyse.analyse_NO2_200_3days()
+analyse.analyse_PM10()
+
+# =========  EXPORT EXCEL ========= #
+print("Generating Excel report with graphs...")
+export_excel.run_export()
+print("Excel export completed.")
