@@ -1,3 +1,5 @@
 datas/
 data_clean
 __pycache__
+export_auto
+*.png
