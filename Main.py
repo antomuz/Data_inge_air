@@ -4,7 +4,7 @@ import extract_data
 import process_data
 
 end_date = datetime.now()
-start_date = end_date - timedelta(days=90)
+start_date = end_date - timedelta(days=1080)
 
 start_date_str = start_date.strftime("%Y-%m-%d")
 end_date_str = end_date.strftime("%Y-%m-%d")
