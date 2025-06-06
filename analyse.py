@@ -58,7 +58,7 @@ def analyse_PM10():
     df_pm10 = pd.read_csv(os.path.join(clean_dir, "PM10_data.csv"))
 
     # Lignes au-dessus du seuil
-    seuil_pm10 = 50
+    seuil_pm10 = 80
     df_alert_pm10 = df_pm10[df_pm10['pm10_value'] > seuil_pm10]
 
     print(f"Nombre de dépassements PM10 : {len(df_alert_pm10)}")
